@@ -1,0 +1,26 @@
+<!-- 計算機　問題の桁数と演算指定を入力し、送信する画面 -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>研修計算機</title>
+</head>
+<body>
+<hr>
+どの範囲で出題しますか？<br>
+<form action ="calc2.php" method ="post">
+    <p>
+        問題桁数<br>
+        <input type="radio" name="intDigit" value="1" required>0-9まで<br>
+        <input type="radio" name="intDigit" value="2">0-99まで
+    </p>
+    <p>
+        演算指定（指定がないと足し算のみ行われます）<br>
+        <input type="checkbox" name="intCalcMethod[]" value="1">足し算<br>
+        <input type="checkbox" name="intCalcMethod[]" value="2">引き算
+    </p>
+    <input type="submit" value="送信">
+    <input type="reset" value="リセット"><br>
+</form>
+</body>
+</html>
