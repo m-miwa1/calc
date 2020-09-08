@@ -9,6 +9,18 @@
         $arrayQuestion = unserialize($_POST['arrayQuestion']);
         //問題の答えを格納する配列
         $arrayAnswer = unserialize($_POST['arrayAnswer']);
+        //問題と入力された解答、正誤を格納する配列
+        $arrayQuestionAndAnswer = [];
+
+        for($n = 0; $n < 5; $n++){
+            $arrayQuestionAndAnswer[] = $n + 1 . "問目" . $arrayQuestion[$n] . $arrayInputAnswer[$n];
+            if ($arrayInputAnswer[$n] == $arrayAnswer[$n]) {
+                $arrayQuestionAndAnswer[] .= "...正解<br>";
+            } else {
+                $arrayQuestionAndAnswer[] .= "...不正解。答えは" . $arrayAnswer[$n] . "<br>";
+            }
+            
+        }
         
 ?>
 <!DOCTYPE html>
@@ -19,15 +31,9 @@
 </head>
 <body>
 <p>練習問題結果</p>
-<?php for ($n = 0; $n < 5; $n++) : ?>
-    <?php echo $n + 1 ?>問目  <?php echo $arrayQuestion[$n] ?>  <?php echo $arrayInputAnswer[$n] ?>
-    <?php if ($arrayInputAnswer[$n] == $arrayAnswer[$n]) : ?>
-    ...正解<br>
-    <?php else : ?>
-    ...不正解。答えは<?php echo $arrayAnswer[$n] ?>。<br>
-    <?php endif; ?>
-
-<?php endfor; ?>
+<?php foreach ($arrayQuestionAndAnswer as $questionAndAnswer) : ?>
+<?php echo $questionAndAnswer ?>
+<?php endforeach; ?>
 
 <?php endif; ?>
 </body>
