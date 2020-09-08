@@ -1,12 +1,4 @@
 <!-- 計算機　表示された問題の解答を入力し、送信する画面 -->
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>研修計算機</title>
-</head>
-<body>
-<p>計算練習</p>
 <?php
 	//前画面からPOSTで値が飛んできていない場合は何も表示しない
     if (!empty($_POST["intDigit"])) :
@@ -17,9 +9,17 @@
         $intCalcMethod = 0;
         
         //問題桁数を表示するための変数
-        $strDigitKeyword = "";
+        //$strDigitKeyword = "";
+        
         //mt_randの引数に使用する変数
-        $randGit = 0;
+        //$randGit = 0;
+        
+        //問題として出題される数字の最小値
+        //const ONEDIGIT = 0;
+        define('ONEDIGIT', '0'); 
+        
+        //問題の出題数を格納する定数
+        define('NUMBERQUESTION', '5'); 
         
         //出題する問題の値を格納する配列
         $arrayQuestionA = [];
@@ -35,29 +35,32 @@
             $intCalcMethod = 1;
         } else {
         	//演算指定が片方・もしくは両方入力されていた場合、intCalcMethodに値を格納(足し算:1,引き算:2,両方:3)
-            foreach ($_POST['intCalcMethod'] as $intCalcs) {
-                $intCalcMethod += $intCalcs;
+            foreach ($_POST['intCalcMethod'] as $intCalc) {
+                $intCalcMethod += $intCalc;
             }
         }
         
         if ($intDigit == 1) {
-            $strDigitKeyword = "0-9";
-            $randGit = 9;
+            //$strDigitKeyword = "0-9";
+            //問題として出題される数字の最大値
+            define('RANDDIGIT', '9');
+            //RANDDIGIT = 9;
         } else {
-            $strDigitKeyword = "0-99";
-            $randGit = 99;
+            //$strDigitKeyword = "0-99";
+            define('RANDDIGIT', '99');
+            //RANDDIGIT = 99;
         }
         
         
         //forで各配列に値を格納
-        for ($x = 0; $x < 5; $x++) {
-            $arrayQuestionA[$x] = mt_rand(0,$randGit);
-            $arrayQuestionB[$x] = mt_rand(0,$randGit);
+        for ($x = 0; $x < NUMBERQUESTION; $x++) {
+            $arrayQuestionA[] = mt_rand(ONEDIGIT,RANDDIGIT);
+            $arrayQuestionB[] = mt_rand(ONEDIGIT,RANDDIGIT);
         }
         
         //for内のifでintCalcMethodの値により足し算・引き算・両方(mt_rand()によってランダム)に分岐
         //$arrayAnswerに問題の答えを、$arrayQuestionに問題を格納する
-        for ($i = 0; $i < 5; $i++) {
+        for ($i = 0; $i < NUMBERQUESTION; $i++) {
             if ($intCalcMethod == 1) {
                 $arrayAnswer[$i] = $arrayQuestionA[$i] + $arrayQuestionB[$i];
                 $arrayQuestion[$i] = $arrayQuestionA[$i] . " + " . $arrayQuestionB[$i] . " = ";
@@ -73,15 +76,22 @@
             }
         }
 ?>
-
-選択したのは<?php echo $strDigitKeyword ?>までの問題です。<br>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>研修計算機</title>
+</head>
+<body>
+<p>計算練習</p>
+選択したのは<?php echo ONEDIGIT ?>-<?php echo RANDDIGIT ?>までの問題です。<br>
 全部で5問出題します。
 <p>
     <form action ="calc3.php" method ="post">
 
-    <?php for ($o = 0; $o < 5; $o++) : ?>
+    <?php for ($index = 0; $index < NUMBERQUESTION; $index++) : ?>
 
-    <?php echo $o + 1 ?>問目  <?php echo $arrayQuestion[$o] ?> 
+    <?php echo $index + 1 ?>問目  <?php echo $arrayQuestion[$index] ?> 
 
     <input type="number" name="arrayInputAnswer[]"><br>
 
