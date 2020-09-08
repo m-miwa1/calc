@@ -8,14 +8,7 @@
         //演算指定
         $intCalcMethod = 0;
         
-        //問題桁数を表示するための変数
-        //$strDigitKeyword = "";
-        
-        //mt_randの引数に使用する変数
-        //$randGit = 0;
-        
         //問題として出題される数字の最小値
-        //const ONEDIGIT = 0;
         define('ONEDIGIT', '0'); 
         
         //問題の出題数を格納する定数
@@ -41,14 +34,11 @@
         }
         
         if ($intDigit == 1) {
-            //$strDigitKeyword = "0-9";
             //問題として出題される数字の最大値
             define('RANDDIGIT', '9');
-            //RANDDIGIT = 9;
         } else {
             //$strDigitKeyword = "0-99";
             define('RANDDIGIT', '99');
-            //RANDDIGIT = 99;
         }
         
         
