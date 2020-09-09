@@ -34,25 +34,25 @@ if (!isset($_POST['calcMethod'])) {
 
 //forで各配列に値を格納
 for ($x = 0; $x < NUMBER_QUESTION; $x++) {
-    $arrayQuestionA[] = mt_rand(MIN_DIGIT,MAX_DIGIT[$intDigit]);
-    $arrayQuestionB[] = mt_rand(MIN_DIGIT,MAX_DIGIT[$intDigit]);
+    $arrayNumberA[] = mt_rand(MIN_DIGIT, MAX_DIGIT[$intDigit]);
+    $arrayNumberB[] = mt_rand(MIN_DIGIT, MAX_DIGIT[$intDigit]);
 }
         
 //for内のifでintCalcMethodの値により足し算・引き算・両方(mt_rand()によってランダム)に分岐
 //$arrayAnswerに問題の答えを、$arrayQuestionに問題を格納する
 for ($i = 0; $i < NUMBER_QUESTION; $i++) {
     if ($intCalcMethod == 1) {
-        $arrayAnswer[$i] = $arrayQuestionA[$i] + $arrayQuestionB[$i];
-        $arrayQuestion[$i] = $arrayQuestionA[$i] . " + " . $arrayQuestionB[$i] . " = ";
+        $arrayAnswer[$i] = $arrayNumberA[$i] + $arrayNumberB[$i];
+        $arrayQuestion[$i] = $arrayNumberA[$i] . " + " . $arrayNumberB[$i] . " = ";
     } elseif ($intCalcMethod == 2) {
-        $arrayAnswer[$i] = $arrayQuestionA[$i] - $arrayQuestionB[$i];
-        $arrayQuestion[$i] = $arrayQuestionA[$i] . " - " . $arrayQuestionB[$i] . " = ";
+        $arrayAnswer[$i] = $arrayNumberA[$i] - $arrayNumberB[$i];
+        $arrayQuestion[$i] = $arrayNumberA[$i] . " - " . $arrayNumberB[$i] . " = ";
     } elseif (mt_rand(1,2) % 2 == 0) {
-        $arrayAnswer[$i] = $arrayQuestionA[$i] - $arrayQuestionB[$i];
-        $arrayQuestion[$i] = $arrayQuestionA[$i] . " - " . $arrayQuestionB[$i] . " = ";
+        $arrayAnswer[$i] = $arrayNumberA[$i] - $arrayNumberB[$i];
+        $arrayQuestion[$i] = $arrayNumberA[$i] . " - " . $arrayNumberB[$i] . " = ";
     } else {
-        $arrayAnswer[$i] = $arrayQuestionA[$i] + $arrayQuestionB[$i];
-        $arrayQuestion[$i] = $arrayQuestionA[$i] . " + " . $arrayQuestionB[$i] . " = ";
+        $arrayAnswer[$i] = $arrayNumberA[$i] + $arrayNumberB[$i];
+        $arrayQuestion[$i] = $arrayNumberA[$i] . " + " . $arrayNumberB[$i] . " = ";
     }
 }
 ?>
