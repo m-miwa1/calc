@@ -26,7 +26,6 @@ $arrayQuestion = [];
 if (!isset($_POST['calcMethod'])) {
     $intCalcMethod = 1;
 } else {
-    //演算指定が片方・もしくは両方入力されていた場合、intCalcMethodに値を格納(足し算:1,引き算:2,両方:3)
     foreach ($_POST['calcMethod'] as $intCalc) {
         $intCalcMethod += $intCalc;
     }
@@ -55,6 +54,11 @@ for ($i = 0; $i < NUMBER_QUESTION; $i++) {
         $arrayQuestion[$i] = $arrayNumberA[$i] . " + " . $arrayNumberB[$i] . " = ";
     }
 }
+
+function boolRandam() {
+    return mt_rand(1,2) % 2 == 0
+}
+
 ?>
 <!DOCTYPE html>
 <html>
