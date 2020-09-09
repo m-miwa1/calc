@@ -4,7 +4,7 @@
 require_once('const.php');
 
 //前画面からPOSTで値が飛んできていない場合は何も表示しない
-if (!isset($_POST["digit"]) || !isset($_POST['calcMethod'])) {
+if (!isset($_POST["digit"])) {
     exit;
 }
 
