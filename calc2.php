@@ -1,10 +1,12 @@
 <?php
 //計算機 表示された問題の解答を入力し、送信する画面
+
+require_once('const.php');
+
 //前画面からPOSTで値が飛んできていない場合は何も表示しない
 if (empty($_POST["intDigit"])) {
     exit;
 }
-require_once('const.php');
 
 //問題桁数
 $intDigit = $_POST["intDigit"];
