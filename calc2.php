@@ -4,23 +4,21 @@
 if (empty($_POST["intDigit"])) {
     exit;
 }
+require_once('const.php');
+
 //問題桁数
 $intDigit = $_POST["intDigit"];
 //演算指定
 $intCalcMethod = 0;
 //問題として出題される値の最大値
 $maxDigit = 0;
-
 //出題する問題の値を格納する配列
 $arrayQuestionA = [];
 $arrayQuestionB = [];
-        
 //問題の答えを確認する配列
 $arrayAnswer = [];
 //問題を格納する配列
 $arrayQuestion = [];
-
-require_once('const.php');
 
 //演算指定が未入力の場合、足し算とみなして1を格納
 if (empty($_POST['intCalcMethod'])) {
