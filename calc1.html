@@ -11,13 +11,13 @@
 <form action ="calc2.php" method ="post">
     <p>
         問題桁数<br>
-        <input type="radio" name="intDigit" value="1" checked>0-9まで<br>
-        <input type="radio" name="intDigit" value="2">0-99まで
+        <input type="radio" name="digit" value="1" checked>0-9まで<br>
+        <input type="radio" name="digit" value="2">0-99まで
     </p>
     <p>
         演算指定（指定がないと足し算のみ行われます）<br>
-        <input type="checkbox" name="intCalcMethod[]" value="1">足し算<br>
-        <input type="checkbox" name="intCalcMethod[]" value="2">引き算
+        <input type="checkbox" name="calcMethod[]" value="1">足し算<br>
+        <input type="checkbox" name="calcMethod[]" value="2">引き算
     </p>
     <input type="submit" value="送信">
     <input type="reset" value="リセット"><br>
