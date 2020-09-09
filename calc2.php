@@ -4,7 +4,7 @@
 require_once('const.php');
 
 //前画面からPOSTで値が飛んできていない場合は何も表示しない
-if (!isset($_POST["intDigit"])) {
+if (!isset($_POST["intDigit"]) || !isset($_POST['intCalcMethod'])) {
     exit;
 }
 
@@ -23,7 +23,7 @@ $arrayAnswer = [];
 $arrayQuestion = [];
 
 //演算指定が未入力の場合、足し算とみなして1を格納
-if (!isset($_POST['intCalcmethod'])) {
+if (!isset($_POST['intCalcMethod'])) {
     $intCalcMethod = 1;
 } else {
     //演算指定が片方・もしくは両方入力されていた場合、intCalcMethodに値を格納(足し算:1,引き算:2,両方:3)
