@@ -1,7 +1,7 @@
 <?php
 //計算機 表示された問題の解答を入力し、送信する画面
 //前画面からPOSTで値が飛んできていない場合は何も表示しない
-if (empty($_POST["intDigit"])){
+if (empty($_POST["intDigit"])) {
     exit;
 }
 //問題桁数
@@ -84,6 +84,5 @@ for ($i = 0; $i < NUMBER_QUESTION; $i++) {
     <input type="reset" value="リセット"><br>
     </form>
 </p>
-<?php endif; ?>
 </body>
 </html>
