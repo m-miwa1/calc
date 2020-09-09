@@ -4,12 +4,12 @@
 require_once('const.php');
 
 //前画面からPOSTで値が飛んできていない場合は何も表示しない
-if (!isset($_POST["intDigit"]) || !isset($_POST['intCalcMethod'])) {
+if (!isset($_POST["digit"]) || !isset($_POST['calcMethod'])) {
     exit;
 }
 
 //問題桁数
-$intDigit = $_POST["intDigit"];
+$intDigit = $_POST["digit"];
 //演算指定
 $intCalcMethod = 0;
 //問題として出題される値の最大値
@@ -23,11 +23,11 @@ $arrayAnswer = [];
 $arrayQuestion = [];
 
 //演算指定が未入力の場合、足し算とみなして1を格納
-if (!isset($_POST['intCalcMethod'])) {
+if (!isset($_POST['calcMethod'])) {
     $intCalcMethod = 1;
 } else {
     //演算指定が片方・もしくは両方入力されていた場合、intCalcMethodに値を格納(足し算:1,引き算:2,両方:3)
-    foreach ($_POST['intCalcMethod'] as $intCalc) {
+    foreach ($_POST['calcMethod'] as $intCalc) {
         $intCalcMethod += $intCalc;
     }
 }
