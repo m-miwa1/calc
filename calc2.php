@@ -4,7 +4,7 @@
 require_once('const.php');
 
 //前画面からPOSTで値が飛んできていない場合は何も表示しない
-if (empty($_POST["intDigit"])) {
+if (!isset($_POST["intDigit"])) {
     exit;
 }
 
