@@ -1,5 +1,8 @@
 <?php
 //計算機 問題の答えと入力された解答の答え合わせをする画面
+
+require_once('const.php');
+
 //前画面からPOSTで値が飛んできていない場合は何も表示しない
 if (empty($_POST["arrayInputAnswer"])) {
     exit;
@@ -16,7 +19,7 @@ $arrayQuestionAndNumber = [];
 //問題の正誤を格納する配列
 $arrayCorrectness = [];
 
-for($n = 0; $n < 5; $n++){
+for($n = 0; $n < NUMBER_QUESTION; $n++){
     $arrayQuestionAndNumber[] = $n + 1 . "問目  " . $arrayQuestion[$n];  ;
     if ($arrayInputAnswer[$n] == $arrayAnswer[$n]) {
         $arrayCorrectness[] = "...正解<br>";
@@ -34,7 +37,7 @@ for($n = 0; $n < 5; $n++){
 </head>
 <body>
 <p>練習問題結果</p>
-<?php for ($index = 0; $index < 5; $index++) : ?>
+<?php for ($index = 0; $index < NUMBER_QUESTION; $index++) : ?>
 <?php echo $arrayQuestionAndNumber[$index] . htmlspecialchars($arrayInputAnswer[$index]) . $arrayCorrectness[$index]?>
 <?php endfor; ?>
 </body>
