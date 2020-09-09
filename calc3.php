@@ -15,7 +15,7 @@ $arrayAnswer = unserialize($_POST['arrayAnswer']);
 $arrayQuestionAndAnswer = [];
 
 for($n = 0; $n < 5; $n++){
-    $arrayQuestionAndAnswer[] = $n + 1 . "問目" . $arrayQuestion[$n] . $arrayInputAnswer[$n];
+    $arrayQuestionAndAnswer[] = $n + 1 . "問目" . $arrayQuestion[$n] . htmlspecialchars($arrayInputAnswer[$n]);
     if ($arrayInputAnswer[$n] == $arrayAnswer[$n]) {
         $arrayQuestionAndAnswer[] .= "...正解<br>";
     } else {
