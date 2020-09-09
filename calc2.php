@@ -23,7 +23,7 @@ $arrayAnswer = [];
 $arrayQuestion = [];
 
 //演算指定が未入力の場合、足し算とみなして1を格納
-if (empty($_POST['intCalcMethod'])) {
+if (!isset($_POST['intCalcmethod'])) {
     $intCalcMethod = 1;
 } else {
     //演算指定が片方・もしくは両方入力されていた場合、intCalcMethodに値を格納(足し算:1,引き算:2,両方:3)
