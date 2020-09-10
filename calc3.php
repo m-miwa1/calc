@@ -16,17 +16,14 @@ $arrayQuestion = unserialize($_POST['arrayQuestion']);
 $arrayAnswer = unserialize($_POST['arrayAnswer']);
 //問題と問題数を格納する配列
 $arrayQuestionAndNumber = [];
-//問題の正誤を格納する配列
-$arrayCorrectness = [];
 
 for($n = 0; $n < NUMBER_QUESTION; $n++){
-    $arrayQuestionAndNumber[] = $n + 1 . "問目  " . $arrayQuestion[$n];  ;
+    $arrayQuestionAndNumber[] = $n + 1 . "問目  " . $arrayQuestion[$n];
     if ($arrayInputAnswer[$n] == $arrayAnswer[$n]) {
-        $arrayCorrectness[] = "...正解<br>";
+        $arrayQuestionAndNumber[$n] .= "...正解";
     } else {
-        $arrayCorrectness[] = "...不正解。答えは" . $arrayAnswer[$n] . "<br>";
-    }
-            
+        $arrayQuestionAndNumber[$n] .= "...不正解。答えは" . $arrayAnswer[$n];
+    }    
 }
 ?>
 <!DOCTYPE html>
@@ -38,7 +35,7 @@ for($n = 0; $n < NUMBER_QUESTION; $n++){
 <body>
 <p>練習問題結果</p>
 <?php for ($index = 0; $index < NUMBER_QUESTION; $index++) : ?>
-<?php echo $arrayQuestionAndNumber[$index] . htmlspecialchars($arrayInputAnswer[$index]) . $arrayCorrectness[$index]?>
+<?php echo htmlspecialchars($arrayQuestionAndNumber[$index]) . "<br>" ?>
 <?php endfor; ?>
 </body>
 </html>
