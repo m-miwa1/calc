@@ -46,7 +46,7 @@ for ($i = 0; $i < NUMBER_QUESTION; $i++) {
     } elseif ($intCalcMethod == 2) {
         $arrayAnswer[$i] = $arrayNumberA[$i] - $arrayNumberB[$i];
         $arrayQuestion[$i] = $arrayNumberA[$i] . " - " . $arrayNumberB[$i] . " = ";
-    } elseif (mt_rand(1,2) % 2 == 0) {
+    } elseif (boolRandam()) {
         $arrayAnswer[$i] = $arrayNumberA[$i] - $arrayNumberB[$i];
         $arrayQuestion[$i] = $arrayNumberA[$i] . " - " . $arrayNumberB[$i] . " = ";
     } else {
@@ -56,7 +56,7 @@ for ($i = 0; $i < NUMBER_QUESTION; $i++) {
 }
 
 function boolRandam() {
-    return mt_rand(1,2) % 2 == 0
+    return mt_rand(1,2) % 2 == 0;
 }
 
 ?>
