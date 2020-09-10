@@ -9,9 +9,9 @@ if (!isset($_POST["digit"])) {
 }
 
 //問題桁数
-$intDigit = $_POST["digit"];
-//演算指定
-$intCalcMethod = 0;
+$digit = $_POST["digit"];
+//演算指定する配列に使用する変数
+$calcMethod = 0;
 //問題として出題される値の最大値
 $maxDigit = 0;
 //出題する問題の値を格納する配列
@@ -22,36 +22,43 @@ $arrayAnswer = [];
 //問題を格納する配列
 $arrayQuestion = [];
 
-//演算指定が未入力の場合、足し算とみなして1を格納
+//演算指定が未入力の場合、1を格納
 if (!isset($_POST['calcMethod'])) {
-    $intCalcMethod = 1;
+    $calcMethod = 1;
 } else {
     foreach ($_POST['calcMethod'] as $intCalc) {
-        $intCalcMethod += $intCalc;
+        $calcMethod += $intCalc;
     }
 }
 
 //forで各配列に値を格納
 for ($x = 0; $x < NUMBER_QUESTION; $x++) {
-    $arrayNumberA[] = mt_rand(MIN_DIGIT, MAX_DIGIT[$intDigit]);
-    $arrayNumberB[] = mt_rand(MIN_DIGIT, MAX_DIGIT[$intDigit]);
+    $arrayNumberA[] = mt_rand(MIN_DIGIT, MAX_DIGIT[$digit]);
+    $arrayNumberB[] = mt_rand(MIN_DIGIT, MAX_DIGIT[$digit]);
 }
-        
-//for内のifでintCalcMethodの値により足し算・引き算・両方(mt_rand()によってランダム)に分岐
-//$arrayAnswerに問題の答えを、$arrayQuestionに問題を格納する
+
 for ($i = 0; $i < NUMBER_QUESTION; $i++) {
-    if ($intCalcMethod == 1) {
-        $arrayAnswer[$i] = $arrayNumberA[$i] + $arrayNumberB[$i];
-        $arrayQuestion[$i] = $arrayNumberA[$i] . " + " . $arrayNumberB[$i] . " = ";
-    } elseif ($intCalcMethod == 2) {
-        $arrayAnswer[$i] = $arrayNumberA[$i] - $arrayNumberB[$i];
-        $arrayQuestion[$i] = $arrayNumberA[$i] . " - " . $arrayNumberB[$i] . " = ";
-    } elseif (boolRandam()) {
-        $arrayAnswer[$i] = $arrayNumberA[$i] - $arrayNumberB[$i];
-        $arrayQuestion[$i] = $arrayNumberA[$i] . " - " . $arrayNumberB[$i] . " = ";
-    } else {
-        $arrayAnswer[$i] = $arrayNumberA[$i] + $arrayNumberB[$i];
-        $arrayQuestion[$i] = $arrayNumberA[$i] . " + " . $arrayNumberB[$i] . " = ";
+    switch(CALC_METHOD[$calcMethod]){
+        case "足し算":
+            $arrayAnswer[$i] = $arrayNumberA[$i] + $arrayNumberB[$i];
+            $arrayQuestion[$i] = $arrayNumberA[$i] . " + " . $arrayNumberB[$i] . " = ";
+            break;
+        case "引き算":
+            $arrayAnswer[$i] = $arrayNumberA[$i] - $arrayNumberB[$i];
+            $arrayQuestion[$i] = $arrayNumberA[$i] . " - " . $arrayNumberB[$i] . " = ";
+            break;
+        case "足し算引き算":
+            if (boolRandam()) {
+                $arrayAnswer[$i] = $arrayNumberA[$i] - $arrayNumberB[$i];
+                $arrayQuestion[$i] = $arrayNumberA[$i] . " - " . $arrayNumberB[$i] . " = ";
+            } else {
+                $arrayAnswer[$i] = $arrayNumberA[$i] + $arrayNumberB[$i];
+                $arrayQuestion[$i] = $arrayNumberA[$i] . " + " . $arrayNumberB[$i] . " = ";
+            }
+            break;
+        default:
+            exit;
+            break;
     }
 }
 
@@ -68,7 +75,7 @@ function boolRandam() {
 </head>
 <body>
 <p>計算練習</p>
-選択したのは<?php echo MIN_DIGIT ?>-<?php echo MAX_DIGIT[$intDigit] ?>までの問題です。<br>
+選択したのは<?php echo MIN_DIGIT ?>-<?php echo MAX_DIGIT[$digit] ?>までの問題です。<br>
 全部で5問出題します。
 <p>
     <form action ="calc3.php" method ="post">
