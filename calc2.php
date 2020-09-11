@@ -9,7 +9,7 @@ if (!isset($_POST["digit"])) {
 }
 
 //問題桁数
-$digit = $_POST["digit"];
+$digit = htmlspecialchars($_POST["digit"]);
 //演算指定する配列に使用する変数
 $calcMethod = 0;
 //問題として出題される値の最大値
