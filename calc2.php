@@ -38,16 +38,16 @@ for ($x = 0; $x < NUMBER_QUESTION; $x++) {
 }
 
 for ($i = 0; $i < NUMBER_QUESTION; $i++) {
-    switch(CALC_METHOD[$calcMethod]){
-        case "足し算":
+    switch($calcMethod){
+        case ADDITION:
             $arrayAnswer[$i] = $arrayNumberA[$i] + $arrayNumberB[$i];
             $arrayQuestion[$i] = $arrayNumberA[$i] . " + " . $arrayNumberB[$i] . " = ";
             break;
-        case "引き算":
+        case SUBSTRACTION:
             $arrayAnswer[$i] = $arrayNumberA[$i] - $arrayNumberB[$i];
             $arrayQuestion[$i] = $arrayNumberA[$i] . " - " . $arrayNumberB[$i] . " = ";
             break;
-        case "足し算引き算":
+        case ADDITION_SUBSTRACTION:
             if (boolRandam()) {
                 $arrayAnswer[$i] = $arrayNumberA[$i] - $arrayNumberB[$i];
                 $arrayQuestion[$i] = $arrayNumberA[$i] . " - " . $arrayNumberB[$i] . " = ";
