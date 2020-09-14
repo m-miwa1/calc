@@ -24,11 +24,7 @@ $arrayQuestion = [];
 
 //演算指定が未入力の場合、1を格納
 if (!isset($_POST['calcMethod'])) {
-    $calcMethod = 1;
-} else {
-    foreach ($_POST['calcMethod'] as $intCalc) {
-        $calcMethod += $intCalc;
-    }
+    $calcMethod = ADDITION;
 }
 
 //forで各配列に値を格納
