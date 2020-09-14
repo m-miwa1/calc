@@ -10,8 +10,8 @@ if (!isset($_POST["digit"])) {
 
 //問題桁数
 $digit = htmlspecialchars($_POST["digit"]);
-//演算指定する配列に使用する変数
-$calcMethod = 0;
+//演算指定する配列
+$calcMethod = [];
 //問題として出題される値の最大値
 $maxDigit = 0;
 //出題する問題の値を格納する配列
@@ -24,7 +24,9 @@ $arrayQuestion = [];
 
 //演算指定が未入力の場合、1を格納
 if (!isset($_POST['calcMethod'])) {
-    $calcMethod = ADDITION;
+    $calcMethod[0] = ADDITION;
+} else {
+    $calcMethod = $_POST['calcMethod'];
 }
 
 //forで各配列に値を格納
@@ -55,7 +57,7 @@ for ($i = 0; $i < NUMBER_QUESTION; $i++) {
         default:
             exit;
             break;
-    }
+    } 
 }
 
 function boolRandam() {
