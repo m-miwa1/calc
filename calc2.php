@@ -31,8 +31,10 @@ for ($x = 0; $x < NUMBER_QUESTION; $x++) {
     $arrayNumberB[] = mt_rand(MIN_DIGIT, MAX_DIGIT[$digit]);
 }
 
+//生成した問題と解答をそれぞれの配列に格納
 list ($arrayQuestion,$arrayAnswer) = createQuestion(NUMBER_QUESTION,$calcMethod,$arrayNumberA,$arrayNumberB);
 
+//問題と解答を返すメソッド
 function createQuestion($numberQuestion, $calcMethod, $arrayNumberA, $arrayNumberB) {
     $arrayAnswer = [];
     $arrayQuestion = [];
