@@ -11,4 +11,3 @@ define('MAX_DIGIT', [1 => 9, 2 => 99]);
 //四則演算を格納する定数
 define('ADDITION', 1);
 define('SUBSTRACTION', 2);
-define('ADDITION_SUBSTRACTION', 3);
