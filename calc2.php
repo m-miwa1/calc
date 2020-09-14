@@ -73,7 +73,7 @@ function createQuestion($numberQuestion, $calcMethod, $arrayNumberA, $arrayNumbe
 
     <?php for ($index = 0; $index < NUMBER_QUESTION; $index++) : ?>
 
-    <?php echo $index + 1 ?>問目  <?php echo $arrayQuestion[$index] ?> 
+    <?php echo $index + 1 ?>問目  <?php echo htmlspecialchars($arrayQuestion[$index]) ?> 
 
     <input type="number" name="arrayInputAnswer[]"><br>
 
