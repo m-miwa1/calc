@@ -17,10 +17,6 @@ $maxDigit = 0;
 //出題する問題の値を格納する配列
 $arrayQuestionA = [];
 $arrayQuestionB = [];
-//問題の答えを確認する配列
-$arrayAnswer = [];
-//問題を格納する配列
-$arrayQuestion = [];
 
 //演算指定が未入力の場合、1を格納
 if (!isset($_POST['calcMethod'])) {
