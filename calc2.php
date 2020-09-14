@@ -35,33 +35,26 @@ for ($x = 0; $x < NUMBER_QUESTION; $x++) {
     $arrayNumberB[] = mt_rand(MIN_DIGIT, MAX_DIGIT[$digit]);
 }
 
-for ($i = 0; $i < NUMBER_QUESTION; $i++) {
-    switch($calcMethod){
-        case ADDITION:
-            $arrayAnswer[$i] = $arrayNumberA[$i] + $arrayNumberB[$i];
-            $arrayQuestion[$i] = $arrayNumberA[$i] . " + " . $arrayNumberB[$i] . " = ";
-            break;
-        case SUBSTRACTION:
-            $arrayAnswer[$i] = $arrayNumberA[$i] - $arrayNumberB[$i];
-            $arrayQuestion[$i] = $arrayNumberA[$i] . " - " . $arrayNumberB[$i] . " = ";
-            break;
-        case ADDITION_SUBSTRACTION:
-            if (boolRandam()) {
+list ($arrayQuestion,$arrayAnswer) = createQuestion(NUMBER_QUESTION,$calcMethod,$arrayNumberA,$arrayNumberB);
+
+function createQuestion($numberQuestion, $calcMethod, $arrayNumberA, $arrayNumberB) {
+    $arrayAnswer = [];
+    $arrayQuestion = [];
+    for ($i = 0; $i < $numberQuestion; $i++) {
+        while (1) {
+            $random = mt_rand();
+            if ($random % SUBSTRACTION === 0 && in_array(SUBSTRACTION,$calcMethod)) {
                 $arrayAnswer[$i] = $arrayNumberA[$i] - $arrayNumberB[$i];
                 $arrayQuestion[$i] = $arrayNumberA[$i] . " - " . $arrayNumberB[$i] . " = ";
-            } else {
+                break;
+            } else if ($random % ADDITION === 0 && in_array(ADDITION,$calcMethod)) {
                 $arrayAnswer[$i] = $arrayNumberA[$i] + $arrayNumberB[$i];
                 $arrayQuestion[$i] = $arrayNumberA[$i] . " + " . $arrayNumberB[$i] . " = ";
+                break;
             }
-            break;
-        default:
-            exit;
-            break;
-    } 
-}
-
-function boolRandam() {
-    return mt_rand(1,2) % 2 == 0;
+        }
+    }
+    return [$arrayQuestion, $arrayAnswer];
 }
 
 ?>
