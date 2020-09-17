@@ -20,7 +20,8 @@ require_once('const.php');
     <p>
         演算指定（指定がないと足し算のみ行われます）<br>
         <input type="checkbox" name="calcMethod[]" value="<?php echo ADDITION ?>">足し算<br>
-        <input type="checkbox" name="calcMethod[]" value="<?php echo SUBSTRACTION ?>">引き算
+        <input type="checkbox" name="calcMethod[]" value="<?php echo SUBSTRACTION ?>">引き算<br>
+        <input type="checkbox" name="calcMethod[]" value="<?php echo MULTIPLICATION ?>">掛け算<br>
     </p>
     <input type="submit" value="送信">
     <input type="reset" value="リセット"><br>
