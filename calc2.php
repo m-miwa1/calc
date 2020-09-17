@@ -41,7 +41,11 @@ function createQuestion($numberQuestion, $calcMethod, $arrayNumberA, $arrayNumbe
     for ($i = 0; $i < $numberQuestion; $i++) {
         while (1) {
             $random = mt_rand();
-            if ($random % SUBSTRACTION === 0 && in_array(SUBSTRACTION,$calcMethod)) {
+            if ($random % MULTIPLICATION === 0 && in_array(MULTIPLICATION,$calcMethod)) {
+                $arrayAnswer[$i] = $arrayNumberA[$i] * $arrayNumberB[$i];
+                $arrayQuestion[$i] = $arrayNumberA[$i] . " × " . $arrayNumberB[$i] . " = ";
+                break;
+            } else if ($random % SUBSTRACTION === 0 && in_array(SUBSTRACTION,$calcMethod)) {
                 $arrayAnswer[$i] = $arrayNumberA[$i] - $arrayNumberB[$i];
                 $arrayQuestion[$i] = $arrayNumberA[$i] . " - " . $arrayNumberB[$i] . " = ";
                 break;
